@@ -1,10 +1,13 @@
-`timescale 1ns / 1ps // Simulation time unit is 1 ns; precision is 1 ps.
+
+/*`timescale 1ns / 1ps // Simulation time unit is 1 ns; precision is 1 ps.
 
 module thermometer_tb_weird;
     // These are driven by the testbench.
     reg clk = 0;
     reg rst = 0;
     reg[2:0] s_in = 3'b000; // s3 s2 s1
+    reg[3:0] led_on = 4'b000;
+
     wire [1:0] buzzer = 0;
     
 
@@ -15,8 +18,14 @@ module thermometer_tb_weird;
         .io_PMOD_1(s_in[0]),
         .io_PMOD_2(s_in[1]),
         .io_PMOD_3(s_in[2]),
+
+        .io_PMOD_7(led_on[0]),
+        .io_PMOD_8(led_on[1]),
+        .io_PMOD_9(led_on[2]),
+        .io_PMOD_10(led_on[3]),
+
         .i_Switch_1(~rst),
-        .io_PMOD_7(bz)
+        .io_PMOD_11(bz)
     );
 
     // Toggle the clock every 5 ns, making a 10 ns clock period.
@@ -51,3 +60,4 @@ module thermometer_tb_weird;
         $finish;
     end
 endmodule
+*/

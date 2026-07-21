@@ -5,8 +5,9 @@ module thermometer_tb;
     reg clk = 0;
     reg rst = 0;
     reg[2:0] s_in = 3'b000; // s3 s2 s1
-    wire [1:0] buzzer = 0;
-    
+    wire [3:0] led_on;
+    wire [1:0] bz;
+
 
     // Instantiate the design under test and connect each port by name.
 
@@ -15,8 +16,14 @@ module thermometer_tb;
         .io_PMOD_1(s_in[0]),
         .io_PMOD_2(s_in[1]),
         .io_PMOD_3(s_in[2]),
+
+        .io_PMOD_7(led_on[0]),
+        .io_PMOD_8(led_on[1]),
+        .io_PMOD_9(led_on[2]),
+        .io_PMOD_10(led_on[3]),
+
         .i_Switch_1(~rst),
-        .io_PMOD_7(bz)
+        .io_PMOD_11(bz)
     );
 
     // Toggle the clock every 5 ns, making a 10 ns clock period.
