@@ -1,4 +1,4 @@
-module thermometer (
+module thermometer2 (
     input wire i_Clk,
     input wire io_PMOD_1, // S1 (lowest)
     input wire io_PMOD_2, // S2
@@ -7,7 +7,7 @@ module thermometer (
 
     output wire io_PMOD_7, // R
     output wire io_PMOD_8, // Y
-    output wire io_PMOD_9, // G
+    output wire io_PMOD_9, // W
     output wire io_PMOD_10, // B 
 
     output wire io_PMOD_4 // active buzzer 
@@ -17,7 +17,8 @@ module thermometer (
 
     //states
     localparam COLD = 2'b00, COOL = 2'b01, WARM = 2'b11, HOT = 2'b10; 
-    reg [1:0] state, next_state;
+    reg [1:0] state;
+    wire [1:0] next_state;
     reg buzzing;
 
     // my variables :>
@@ -26,7 +27,7 @@ module thermometer (
     assign s2 = io_PMOD_2;
     assign s3 = io_PMOD_3;
 
-    assign rst = i_Switch_1;
+    assign rst = ~i_Switch_1;
 
     // -------- setting up the clock!!! -------------
     reg [24:0] clk_counter; // counts clock cycles
@@ -43,7 +44,7 @@ module thermometer (
         end
     end
 
-    // -------- assign next bits + buzzing based on transistion equations -----------
+    // -------- assign next bits + buzzing based on transition equations -----------
     assign next_state[0] = s1 & ~s3; // LSB
     assign next_state[1] = s2; //MSB
 

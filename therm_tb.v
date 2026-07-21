@@ -11,7 +11,7 @@ module thermometer_tb;
 
     // Instantiate the design under test and connect each port by name.
 
-    thermometer dut (
+    thermometer2 dut (
         .i_Clk(clk),
         .io_PMOD_1(s_in[0]),
         .io_PMOD_2(s_in[1]),
@@ -23,7 +23,7 @@ module thermometer_tb;
         .io_PMOD_10(led_on[3]),
 
         .i_Switch_1(~rst),
-        .io_PMOD_11(bz)
+        .io_PMOD_4(bz)
     );
 
     // Toggle the clock every 5 ns, making a 10 ns clock period.
