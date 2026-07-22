@@ -6,12 +6,12 @@ module thermometer_tb;
     reg rst = 0;
     reg[2:0] s_in = 3'b000; // s3 s2 s1
     wire [3:0] led_on;
-    wire [1:0] bz;
+    wire bz;
 
 
     // Instantiate the design under test and connect each port by name.
 
-    thermometer2 dut (
+    thermometer dut (
         .i_Clk(clk),
         .io_PMOD_1(s_in[0]),
         .io_PMOD_2(s_in[1]),
